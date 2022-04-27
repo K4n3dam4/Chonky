@@ -17,6 +17,7 @@ import { ListContainer } from './ListContainer';
 
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
+    emptyState?: HTMLDivElement
 }
 
 interface StyleState {
@@ -34,7 +35,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const localClasses = useLocalStyles(styleState);
     const classes = useStyles(viewConfig);
-    const { onScroll } = props;
+    const { onScroll, emptyState } = props;
 
     // In Chonky v0.x, this field was user-configurable. In Chonky v1.x+, we hardcode
     // this to `true` to simplify configuration. Users can just wrap Chonky in their
@@ -44,7 +45,7 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
     const listRenderer = useCallback(
         ({ width, height }: { width: number; height: number }) => {
             if (displayFileIds.length === 0) {
-                return <FileListEmpty width={width} height={viewConfig.entryHeight} />;
+                return <FileListEmpty width={width} height={!emptyState ? viewConfig.entryHeight : height} emptyState={emptyState} />
             } else if (viewConfig.mode === FileViewMode.List) {
                 return <ListContainer width={width} height={height} />;
             } else {

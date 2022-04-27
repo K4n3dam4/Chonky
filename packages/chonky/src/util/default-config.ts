@@ -18,6 +18,7 @@ export type ChonkyConfig = Pick<
     | 'iconComponent'
     | 'darkMode'
     | 'i18n'
+    | 'emptyState'
 >;
 
 export const defaultConfig: ChonkyConfig = {

@@ -15,12 +15,12 @@ import { FileToolbar } from './FileToolbar';
 
 export const FullFileBrowser = React.memo(
     React.forwardRef<FileBrowserHandle, FileBrowserProps>((props, ref) => {
-        const { onScroll } = props
+        const { onScroll, emptyState } = props
         return (
             <FileBrowser ref={ref} {...props}>
                 <FileNavbar />
                 <FileToolbar />
-                <FileList onScroll={onScroll}/>
+                <FileList emptyState={emptyState} onScroll={onScroll}/>
                 <FileContextMenu/>
             </FileBrowser>
         );
