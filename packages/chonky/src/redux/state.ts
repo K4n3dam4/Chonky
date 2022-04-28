@@ -35,6 +35,7 @@ export const initialRootState: RootState = {
     disableSelection: false,
 
     fileViewConfig: ChonkyActions.EnableGridView.fileViewConfig,
+    entryHeightOverride: null,
 
     sortActionId: null,
     sortOrder: SortOrder.ASC,
@@ -45,6 +46,7 @@ export const initialRootState: RootState = {
     doubleClickDelay: 300,
     disableDragAndDrop: false,
     clearSelectionOnOutsideClick: true,
+    displayCustomFileData: false,
 
     lastClick: null,
 

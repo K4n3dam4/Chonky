@@ -118,7 +118,6 @@ export const SmartToolbarButton: React.FC<SmartToolbarButtonProps> = React.memo(
         const { fileActionId } = props;
 
         const action = useParamSelector(selectFileActionData, fileActionId);
-        console.log(action)
         const triggerAction = useFileActionTrigger(fileActionId);
         const { icon, active, disabled } = useFileActionProps(fileActionId);
         const { buttonName, buttonTooltip } = useLocalizedFileActionStrings(action);

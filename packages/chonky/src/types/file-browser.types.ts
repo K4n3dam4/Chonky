@@ -154,6 +154,11 @@ export interface FileBrowserProps {
     darkMode?: boolean;
 
     /**
+     * Entry height override
+     */
+    entryHeightOverride?: Nullable<number>
+
+    /**
      * Configuration for the `react-intl` i18n library. Chonky provides some default
      * values, e.g. `locale` and `defaultLocale` are set to `en`. Any settings you
      * specify here will override the defaults.

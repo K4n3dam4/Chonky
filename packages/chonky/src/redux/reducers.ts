@@ -125,6 +125,9 @@ const reducers = {
     setFileViewConfig(state: RootState, action: PayloadAction<FileViewConfig>) {
         state.fileViewConfig = action.payload;
     },
+    setEntryHeightOverride(state: RootState, action: PayloadAction<number>) {
+      state.entryHeightOverride = action.payload
+    },
     setSort(state: RootState, action: PayloadAction<{ actionId: string; order: SortOrder }>) {
         state.sortActionId = action.payload.actionId;
         state.sortOrder = action.payload.order;

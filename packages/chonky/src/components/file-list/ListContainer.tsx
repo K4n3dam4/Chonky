@@ -8,7 +8,7 @@ import React, { CSSProperties, useCallback, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { FixedSizeList } from 'react-window';
 
-import { selectFileViewConfig, selectors } from '../../redux/selectors';
+import { selectEntryHeightOverride, selectFileViewConfig, selectors } from '../../redux/selectors';
 import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import { makeLocalChonkyStyles } from '../../util/styles';
@@ -23,6 +23,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
     const { width, height } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
+    const entryHeightOverride = useSelector(selectEntryHeightOverride)
 
     const listRef = useRef<FixedSizeList>();
 
@@ -52,7 +53,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
             <FixedSizeList
                 ref={listRef as any}
                 className={classes.listContainer}
-                itemSize={viewConfig.entryHeight}
+                itemSize={entryHeightOverride || viewConfig.entryHeight}
                 height={height}
                 itemCount={displayFileIds.length}
                 width={width}

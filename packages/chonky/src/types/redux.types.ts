@@ -53,6 +53,7 @@ export type RootState = {
 
     // File views
     fileViewConfig: FileViewConfig;
+    entryHeightOverride: Nullable<number>;
 
     // Sorting
     sortActionId: Nullable<string>;
