@@ -10,7 +10,7 @@ const App = () => {
     ]
   return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser disableSelection files={testFiles} displayCustomFileData={['descr', 'type']} />
     </div>
   );
 };

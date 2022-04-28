@@ -6,6 +6,7 @@ import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
 import {
+    useContextMenuActionButton,
     useCustomFileDataKeys,
     useDndIcon,
     useFileEntryHtmlProps,
@@ -39,7 +40,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         const customFileData = useCustomFileDataKeys(file)
-
+        const contextMenuActionButton = useContextMenuActionButton(classes.listFileEntryProperty)
 
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
@@ -80,6 +81,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                         <TextPlaceholder minLength={10} maxLength={20} />
                     )}
                 </div>
+                    {contextMenuActionButton}
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import { Nullable } from 'tsdef';
 
-import { selectFocusSearchInput } from '../redux/selectors';
+import {selectFocusSearchInput} from '../redux/selectors';
 import { thunkRequestFileAction } from '../redux/thunks/dispatchers.thunks';
 import { FileSelectionTransform } from '../types/action.types';
 import { FileViewMode } from '../types/file-view.types';
@@ -224,4 +224,16 @@ export const DefaultActions = {
             iconOnly: true,
         },
     } as const),
+    /**
+     * Action button that enables context menu.
+     */
+    OpenFileContextMenuButton: defineFileAction({
+        id: 'open_file_context_menu_btn',
+        button: {
+            name: 'Open context menu',
+            toolbar: false,
+            icon: ChonkyIconName.list,
+            iconOnly: true,
+        },
+    } as const)
 };

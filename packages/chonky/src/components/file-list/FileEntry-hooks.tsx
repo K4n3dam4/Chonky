@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Nullable, Undefinable } from 'tsdef';
 
 import { ChonkyActions } from '../../action-definitions/index';
-import { selectThumbnailGenerator, selectors } from '../../redux/selectors';
+import {selectThumbnailGenerator, selectors} from '../../redux/selectors';
 import { thunkRequestFileAction } from '../../redux/thunks/dispatchers.thunks';
 import { DndEntryState } from '../../types/file-list.types';
 import { FileData } from '../../types/file.types';
@@ -16,6 +16,9 @@ import { Logger } from '../../util/logger';
 import { TextPlaceholder } from '../external/TextPlaceholder';
 import { KeyboardClickEvent, MouseClickEvent } from '../internal/ClickableWrapper';
 import { FileEntryState } from './GridEntryPreview';
+import {SmartToolbarButton} from "../external/ToolbarButton";
+import {DefaultActions} from "../../action-definitions/default";
+import {useContextMenuTrigger} from "../external/FileContextMenu-hooks";
 
 export const useFileEntryHtmlProps = (file: Nullable<FileData>): HTMLProps<HTMLDivElement> => {
     return useMemo(() => {
@@ -125,6 +128,12 @@ export const useCustomFileDataKeys = (file: Nullable<FileData>) => {
         }
 
         return fileData
+}
+
+export const useContextMenuActionButton = (className: string) => {
+    const {open_file_context_menu_btn} = useSelector(selectors.getFileActionMap)
+    const openContextMenu = useContextMenuTrigger()
+    return open_file_context_menu_btn ? <div onClick={openContextMenu} className={className}><SmartToolbarButton fileActionId={DefaultActions.OpenFileContextMenuButton.id}/></div> : null
 }
 
 export const useThumbnailUrl = (file: Nullable<FileData>) => {
