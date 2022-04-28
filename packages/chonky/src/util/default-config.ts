@@ -19,6 +19,7 @@ export type ChonkyConfig = Pick<
     | 'darkMode'
     | 'i18n'
     | 'emptyState'
+    | 'displayCustomFileData'
 >;
 
 export const defaultConfig: ChonkyConfig = {
@@ -36,6 +37,7 @@ export const defaultConfig: ChonkyConfig = {
     iconComponent: ChonkyIconPlaceholder,
     darkMode: false,
     i18n: {},
+    displayCustomFileData: false
 };
 
 export const setChonkyDefaults = (config: Partial<ChonkyConfig>) => {

@@ -64,6 +64,10 @@ export const ChonkyBusinessLogicInner = React.memo(
                 'boolean'
             )
         );
+        useDTE(
+            reduxActions.setCustomFileData,
+            getValueOrFallback(props.displayCustomFileData, defaultConfig.displayCustomFileData) as any
+        )
 
         // ==== Setup the imperative handle for external use
         useFileBrowserHandle(ref);

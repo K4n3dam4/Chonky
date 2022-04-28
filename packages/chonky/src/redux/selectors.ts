@@ -97,6 +97,7 @@ const getSortActionId = (state: RootState) => state.sortActionId;
 const getSortOrder = (state: RootState) => state.sortOrder;
 const getSearchString = (state: RootState) => state.searchString;
 const _getLastClick = (state: RootState) => state.lastClick;
+const getDisplayCustomFileData = (state: RootState) => state.displayCustomFileData
 
 // Memoized selectors
 const makeGetAction = (fileActionSelector: (state: RootState) => Nullable<string>) =>
@@ -218,6 +219,7 @@ export const selectors = {
     getSortOrder,
     getSearchString,
     _getLastClick,
+    getDisplayCustomFileData,
 
     // Memoized selectors
     getSortedFileIds,

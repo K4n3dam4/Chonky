@@ -6,6 +6,7 @@ import { ChonkyIconContext } from '../../util/icon-helper';
 import { c, makeLocalChonkyStyles } from '../../util/styles';
 import { TextPlaceholder } from '../external/TextPlaceholder';
 import {
+    useCustomFileDataKeys,
     useDndIcon,
     useFileEntryHtmlProps,
     useFileEntryState,
@@ -37,6 +38,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const commonClasses = useCommonEntryStyles(entryState);
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
+        const customFileData = useCustomFileDataKeys(file)
+
+
         return (
             <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
                 <div className={commonClasses.focusIndicator}></div>
@@ -59,6 +63,9 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 >
                     <FileEntryName file={file} />
                 </div>
+                {customFileData && customFileData.map(data => <div key={data.key} className={classes.listFileEntryProperty}>
+                    {data.data ? <span>{data.data}</span> : <span>—</span>}
+                </div>)}
                 <div className={classes.listFileEntryProperty}>
                     {file ? (
                         fileModDateString ?? <span>—</span>
@@ -122,6 +129,7 @@ const useStyles = makeLocalChonkyStyles(theme => ({
         boxSizing: 'border-box',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
+        textOverflow: 'ellipsis',
         flex: '0 1 150px',
         padding: [2, 8],
         zIndex: 20,

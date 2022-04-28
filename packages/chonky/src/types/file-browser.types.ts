@@ -170,4 +170,9 @@ export interface FileBrowserProps {
      * Define empty state
      */
     emptyState?: HTMLDivElement
+
+    /**
+     * Define file data keys that should be displayed in ListView
+     */
+    displayCustomFileData?: boolean | string[]
 }

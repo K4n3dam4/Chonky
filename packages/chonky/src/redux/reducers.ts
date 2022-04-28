@@ -37,6 +37,9 @@ const reducers = {
         state.fileActionMap = fileActionMap as FileMap;
         state.fileActionIds = fileIds;
     },
+    setCustomFileData(state: RootState, action: PayloadAction<string[]>) {
+        state.displayCustomFileData = action.payload
+    },
     updateFileActionMenuItems(state: RootState, action: PayloadAction<[FileActionMenuItem[], FileActionMenuItem[]]>) {
         [state.toolbarItems, state.contextMenuItems] = action.payload;
     },

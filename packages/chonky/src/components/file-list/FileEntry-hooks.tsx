@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Nullable, Undefinable } from 'tsdef';
 
 import { ChonkyActions } from '../../action-definitions/index';
-import { selectThumbnailGenerator } from '../../redux/selectors';
+import { selectThumbnailGenerator, selectors } from '../../redux/selectors';
 import { thunkRequestFileAction } from '../../redux/thunks/dispatchers.thunks';
 import { DndEntryState } from '../../types/file-list.types';
 import { FileData } from '../../types/file.types';
@@ -114,6 +114,18 @@ export const useFileNameComponent = (file: Nullable<FileData>) => {
         );
     }, [file]);
 };
+
+export const useCustomFileDataKeys = (file: Nullable<FileData>) => {
+        if (!file) return null
+
+        const customKeys = useSelector(selectors.getDisplayCustomFileData)
+        let fileData
+        if (typeof customKeys !== 'boolean') {
+            fileData = customKeys.map(key => ({key, data: file[key]}))
+        }
+
+        return fileData
+}
 
 export const useThumbnailUrl = (file: Nullable<FileData>) => {
     const thumbnailGenerator = useSelector(selectThumbnailGenerator);
