@@ -57,9 +57,9 @@ export const FileList: React.FC<FileListProps> = React.memo((props: FileListProp
 
     const ChonkyIcon = useContext(ChonkyIconContext);
     return (
-        <div onScroll={onScroll} ref={drop} className={c([classes.fileListWrapper, localClasses.fileListWrapper])} role="list">
-            <div className={localClasses.dndDropZone}>
-                <div className={localClasses.dndDropZoneIcon}>
+        <div id='chonky-fileListWrapper' onScroll={onScroll} ref={drop} className={c([classes.fileListWrapper, localClasses.fileListWrapper])} role="list">
+            <div id='chonky-dndDropZone' className={localClasses.dndDropZone}>
+                <div id='chonky-dndDropZoneIcon' className={localClasses.dndDropZoneIcon}>
                     <ChonkyIcon icon={dndCanDrop ? ChonkyIconName.dndCanDrop : ChonkyIconName.dndCannotDrop} />
                 </div>
             </div>

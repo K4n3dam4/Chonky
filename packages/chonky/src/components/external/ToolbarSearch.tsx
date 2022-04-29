@@ -77,6 +77,7 @@ export const ToolbarSearch: React.FC<ToolbarSearchProps> = React.memo(() => {
 
     return (
         <TextField
+            id='chonky-searchFieldContainer'
             className={classes.searchFieldContainer}
             size="small"
             variant="outlined"
@@ -87,7 +88,7 @@ export const ToolbarSearch: React.FC<ToolbarSearchProps> = React.memo(() => {
             InputProps={{
                 onKeyUp: handleKeyUp,
                 startAdornment: (
-                    <InputAdornment className={classes.searchIcon} position="start">
+                    <InputAdornment id='chonky-searchIcon' className={classes.searchIcon} position="start">
                         <ChonkyIcon
                             icon={showLoadingIndicator ? ChonkyIconName.loading : ChonkyIconName.search}
                             spin={showLoadingIndicator}
@@ -95,8 +96,9 @@ export const ToolbarSearch: React.FC<ToolbarSearchProps> = React.memo(() => {
                     </InputAdornment>
                 ),
                 className: classes.searchFieldInput,
+                id: 'chonky-searchFieldInput'
             }}
-            inputProps={{ className: classes.searchFieldInputInner }}
+            inputProps={{ className: classes.searchFieldInputInner, id: 'chonky-searchFieldInputInner' }}
         />
     );
 });

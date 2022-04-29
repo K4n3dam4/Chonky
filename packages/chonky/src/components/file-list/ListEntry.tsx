@@ -40,18 +40,19 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
         const ChonkyIcon = useContext(ChonkyIconContext);
         const fileEntryHtmlProps = useFileEntryHtmlProps(file);
         const customFileData = useCustomFileDataKeys(file)
-        const contextMenuActionButton = useContextMenuActionButton(classes.listFileEntryProperty)
+        const contextMenuActionButton = useContextMenuActionButton(c([classes.listFileEntryProperty, 'chonky-listFileEntryProperty']))
 
         return (
-            <div className={classes.listFileEntry} {...fileEntryHtmlProps}>
-                <div className={commonClasses.focusIndicator}></div>
+            <div className={c([classes.listFileEntry, 'chonky-listFileEntry'])} {...fileEntryHtmlProps}>
+                <div className={c([commonClasses.focusIndicator, 'chonky-listFileEntryFocusIndicator'])}></div>
                 <div
                     className={c([
                         commonClasses.selectionIndicator,
                         classes.listFileEntrySelection,
+                        'chonky-listFileEntrySelectionIndicator'
                     ])}
                 ></div>
-                <div className={classes.listFileEntryIcon}>
+                <div className={c([classes.listFileEntryIcon, 'chonky-listFileEntryIcon'])}>
                     <ChonkyIcon
                         icon={dndIconName ?? entryState.icon}
                         spin={dndIconName ? false : entryState.iconSpin}
@@ -59,7 +60,7 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                     />
                 </div>
                 <div
-                    className={classes.listFileEntryName}
+                    className={c([classes.listFileEntryName, 'chonky-listFileEntryName'])}
                     title={file ? file.name : undefined}
                 >
                     <FileEntryName file={file} />
@@ -67,14 +68,14 @@ export const ListEntry: React.FC<FileEntryProps> = React.memo(
                 {customFileData && customFileData.map(data => <div key={data.key} className={classes.listFileEntryProperty}>
                     {data.data ? <span>{data.data}</span> : <span>—</span>}
                 </div>)}
-                <div className={classes.listFileEntryProperty}>
+                <div className={c([classes.listFileEntryProperty, 'chonky-listFileEntryProperty'])}>
                     {file ? (
                         fileModDateString ?? <span>—</span>
                     ) : (
                         <TextPlaceholder minLength={5} maxLength={15} />
                     )}
                 </div>
-                <div className={classes.listFileEntryProperty}>
+                <div className={c([classes.listFileEntryProperty, 'chonky-listFileEntryProperty'])}>
                     {file ? (
                         fileSizeString ?? <span>—</span>
                     ) : (

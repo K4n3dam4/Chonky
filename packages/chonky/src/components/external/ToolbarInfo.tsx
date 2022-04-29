@@ -57,8 +57,8 @@ export const ToolbarInfo: React.FC<ToolbarInfoProps> = React.memo(() => {
     );
 
     return (
-        <div className={classes.infoContainer}>
-            <Typography className={classes.infoText} variant="body1">
+        <div id='chonky-toolbarInfoContainer' className={classes.infoContainer}>
+            <Typography id='chonky-toolbarInfoText' className={classes.infoText} variant="body1">
                 {fileCountString}
                 {(selectedString || hiddenString) && (
                     <span className={classes.extraInfoSpan}>

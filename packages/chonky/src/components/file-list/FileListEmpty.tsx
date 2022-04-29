@@ -34,8 +34,8 @@ export const FileListEmpty: React.FC<FileListEmptyProps> = props => {
     });
 
     return (
-        <div className={classes.fileListEmpty} style={style}>
-            <div className={classes.fileListEmptyContent}>
+        <div id='chonky-fileListEmpty' className={classes.fileListEmpty} style={style}>
+            <div id='chonky-fileListEmptyContent' className={classes.fileListEmptyContent}>
                 {emptyState || <>
                     <ChonkyIcon icon={ChonkyIconName.folderOpen}/>
                     &nbsp; {emptyString}

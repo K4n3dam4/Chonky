@@ -11,7 +11,7 @@ import { FixedSizeList } from 'react-window';
 import { selectEntryHeightOverride, selectFileViewConfig, selectors } from '../../redux/selectors';
 import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
-import { makeLocalChonkyStyles } from '../../util/styles';
+import {c, makeLocalChonkyStyles} from '../../util/styles';
 import { SmartFileEntry } from './FileEntry';
 
 export interface FileListListProps {
@@ -52,7 +52,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         return (
             <FixedSizeList
                 ref={listRef as any}
-                className={classes.listContainer}
+                className={c([classes.listContainer, 'chonky-listContainer'])}
                 itemSize={entryHeightOverride || viewConfig.entryHeight}
                 height={height}
                 itemCount={displayFileIds.length}

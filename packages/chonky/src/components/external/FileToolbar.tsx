@@ -36,13 +36,13 @@ export const FileToolbar: React.FC<FileToolbarProps> = React.memo(() => {
     }, [toolbarItems]);
 
     return (
-        <div className={classes.toolbarWrapper}>
-            <div className={classes.toolbarContainer}>
-                <div className={classes.toolbarLeft}>
+        <div id='chonky-toolbarWrapper' className={classes.toolbarWrapper}>
+            <div id='chonky-toolbarContainer' className={classes.toolbarContainer}>
+                <div id='chonky-toolbarLeft' className={classes.toolbarLeft}>
                     <ToolbarSearch />
                     <ToolbarInfo />
                 </div>
-                <div className={classes.toolbarRight}>{toolbarItemComponents}</div>
+                <div id='chonky-toolbarRight' className={classes.toolbarRight}>{toolbarItemComponents}</div>
             </div>
         </div>
     );

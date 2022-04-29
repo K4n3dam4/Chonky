@@ -38,8 +38,8 @@ export const FileNavbar: React.FC<FileNavbarProps> = React.memo(() => {
     }, [folderChainItems]);
 
     return (
-        <Box className={classes.navbarWrapper}>
-            <Box className={classes.navbarContainer}>
+        <Box id='chonky-navbarWrapper' className={classes.navbarWrapper}>
+            <Box id='chonky-navbarContainer' className={classes.navbarContainer}>
                 <SmartToolbarButton fileActionId={ChonkyActions.OpenParentFolder.id} />
                 <Breadcrumbs
                     className={classes.navbarBreadcrumbs}
