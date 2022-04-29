@@ -8,7 +8,7 @@ import React, { CSSProperties, useCallback, useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { FixedSizeList } from 'react-window';
 
-import { selectEntryHeightOverride, selectFileViewConfig, selectors } from '../../redux/selectors';
+import { selectFileListProps, selectFileViewConfig, selectors } from '../../redux/selectors';
 import { FileViewMode } from '../../types/file-view.types';
 import { useInstanceVariable } from '../../util/hooks-helpers';
 import {c, makeLocalChonkyStyles} from '../../util/styles';
@@ -23,7 +23,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
     const { width, height } = props;
 
     const viewConfig = useSelector(selectFileViewConfig);
-    const entryHeightOverride = useSelector(selectEntryHeightOverride)
+    const fileListProps = useSelector(selectFileListProps)
 
     const listRef = useRef<FixedSizeList>();
 
@@ -39,7 +39,10 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         // When entry size is null, we use List view
         const rowRenderer = (data: { index: number; style: CSSProperties }) => {
             return (
-                <div style={data.style}>
+                <div style={{
+                    ...data.style,
+                    top: fileListProps?.space ? data.style.top as number + fileListProps.space * data.index : data.style.top
+                }}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
                         displayIndex={data.index}
@@ -53,11 +56,12 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
             <FixedSizeList
                 ref={listRef as any}
                 className={c([classes.listContainer, 'chonky-listContainer'])}
-                itemSize={entryHeightOverride || viewConfig.entryHeight}
+                itemSize={viewConfig.entryHeight}
                 height={height}
                 itemCount={displayFileIds.length}
                 width={width}
                 itemKey={getItemKey}
+                {...fileListProps}
             >
                 {rowRenderer}
             </FixedSizeList>

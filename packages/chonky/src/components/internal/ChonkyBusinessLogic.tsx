@@ -68,9 +68,10 @@ export const ChonkyBusinessLogicInner = React.memo(
             reduxActions.setCustomFileData,
             getValueOrFallback(props.displayCustomFileData, defaultConfig.displayCustomFileData) as any
         )
+            console.log(props.listViewProps)
         useDTE(
-            reduxActions.setEntryHeightOverride,
-            getValueOrFallback(props.entryHeightOverride, defaultConfig.entryHeightOverride)
+            reduxActions.setFileListProps,
+            getValueOrFallback(props.listViewProps, defaultConfig.listViewProps)
         )
 
         // ==== Setup the imperative handle for external use

@@ -17,7 +17,7 @@ export type ChonkyConfig = Pick<
     | 'clearSelectionOnOutsideClick'
     | 'iconComponent'
     | 'darkMode'
-    | 'entryHeightOverride'
+    | 'listViewProps'
     | 'i18n'
     | 'emptyState'
     | 'displayCustomFileData'
@@ -37,7 +37,7 @@ export const defaultConfig: ChonkyConfig = {
     clearSelectionOnOutsideClick: true,
     iconComponent: ChonkyIconPlaceholder,
     darkMode: false,
-    entryHeightOverride: null,
+    listViewProps: null,
     i18n: {},
     displayCustomFileData: false,
 };
@@ -45,6 +45,7 @@ export const defaultConfig: ChonkyConfig = {
 export const setChonkyDefaults = (config: Partial<ChonkyConfig>) => {
     for (const key of Object.keys(defaultConfig)) {
         if (key in config) {
+            // @ts-ignore
             defaultConfig[key as keyof ChonkyConfig] = config[
                 key as keyof ChonkyConfig
             ] as any;

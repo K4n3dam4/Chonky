@@ -21,7 +21,7 @@ const App = () => {
     ]
   return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser entryHeightOverride={70} disableSelection files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser listViewProps={{overscanCount: 4, itemSize: 70, space: 10}} disableSelection files={testFiles} displayCustomFileData={['descr', 'type']} />
     </div>
   );
 };

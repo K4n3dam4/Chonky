@@ -1,0 +1,18 @@
+.chonky-listFileEntryIcon {
+    margin-left: 20px;
+}
+
+.chonky-chonkyRoot {
+    font-family: "Helvetica Neue" !important;
+}
+
+.chonky-listFileEntry {
+    box-shadow: none !important;
+    background-color: #F7F8FE;
+    border: none !important;
+}
+
+.chonky-listFileEntryFocusIndicator {
+    box-shadow: rgb(71 62 125) 0px 0px 0px 1px inset !important;
+    background-color: #F7F8FE !important;
+}

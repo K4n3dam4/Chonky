@@ -8,6 +8,8 @@ import { FileArray } from './file.types';
 import { I18nConfig } from './i18n.types';
 import { ChonkyIconProps } from './icons.types';
 import { ThumbnailGenerator } from './thumbnails.types';
+import {FixedSizeListProps} from "react-window";
+import {FileListProps} from "./file-list.types";
 
 /**
  * File browser methods exposed to developers via the `FileBrowser` ref.
@@ -154,9 +156,9 @@ export interface FileBrowserProps {
     darkMode?: boolean;
 
     /**
-     * Entry height override
+     * Override file list props
      */
-    entryHeightOverride?: Nullable<number>
+    listViewProps?: Nullable<FileListProps>
 
     /**
      * Configuration for the `react-intl` i18n library. Chonky provides some default

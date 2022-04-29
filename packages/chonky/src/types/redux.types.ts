@@ -7,6 +7,7 @@ import { FileActionMenuItem } from './action-menus.types';
 import { FileAction, FileActionMap } from './action.types';
 import { ContextMenuConfig } from './context-menu.types';
 import { FileViewConfig } from './file-view.types';
+import { FileListProps } from "./file-list.types";
 import { FileArray, FileIdTrueMap, FileMap } from './file.types';
 import { OptionMap } from './options.types';
 import { FileSelection } from './selection.types';
@@ -53,7 +54,7 @@ export type RootState = {
 
     // File views
     fileViewConfig: FileViewConfig;
-    entryHeightOverride: Nullable<number>;
+    fileListProps: Nullable<FileListProps>
 
     // Sorting
     sortActionId: Nullable<string>;

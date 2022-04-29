@@ -6,6 +6,7 @@ import { GenericFileActionHandler } from '../types/action-handler.types';
 import { FileActionMenuItem } from '../types/action-menus.types';
 import { FileAction, FileActionMap } from '../types/action.types';
 import { ContextMenuConfig } from '../types/context-menu.types';
+import { FileListProps } from "../types/file-list.types";
 import { FileViewConfig } from '../types/file-view.types';
 import { FileArray, FileIdTrueMap, FileMap } from '../types/file.types';
 import { OptionMap } from '../types/options.types';
@@ -125,8 +126,8 @@ const reducers = {
     setFileViewConfig(state: RootState, action: PayloadAction<FileViewConfig>) {
         state.fileViewConfig = action.payload;
     },
-    setEntryHeightOverride(state: RootState, action: PayloadAction<number>) {
-      state.entryHeightOverride = action.payload
+    setFileListProps(state: RootState, action: PayloadAction<FileListProps>) {
+        state.fileListProps = action.payload
     },
     setSort(state: RootState, action: PayloadAction<{ actionId: string; order: SortOrder }>) {
         state.sortActionId = action.payload.actionId;

@@ -35,7 +35,7 @@ export const initialRootState: RootState = {
     disableSelection: false,
 
     fileViewConfig: ChonkyActions.EnableGridView.fileViewConfig,
-    entryHeightOverride: null,
+    fileListProps: null,
 
     sortActionId: null,
     sortOrder: SortOrder.ASC,

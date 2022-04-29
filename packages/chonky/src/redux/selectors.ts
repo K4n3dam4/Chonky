@@ -66,7 +66,7 @@ export const selectSelectedFilesForActionCount = (fileActionId: string) => (stat
 export const selectDisableSelection = (state: RootState) => state.disableSelection;
 
 export const selectFileViewConfig = (state: RootState) => state.fileViewConfig;
-export const selectEntryHeightOverride = (state: RootState) => state.entryHeightOverride;
+export const selectFileListProps = (state: RootState) => state.fileListProps;
 
 export const selectSortActionId = (state: RootState) => state.sortActionId;
 export const selectSortOrder = (state: RootState) => state.sortOrder;
