@@ -68,7 +68,6 @@ export const ChonkyBusinessLogicInner = React.memo(
             reduxActions.setCustomFileData,
             getValueOrFallback(props.displayCustomFileData, defaultConfig.displayCustomFileData) as any
         )
-            console.log(props.listViewProps)
         useDTE(
             reduxActions.setFileListProps,
             getValueOrFallback(props.listViewProps, defaultConfig.listViewProps)
