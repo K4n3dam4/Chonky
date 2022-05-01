@@ -1,4 +1,4 @@
-import { ElementType, UIEvent } from 'react';
+import {ElementType, ReactElement, UIEvent} from 'react';
 import { Nullable } from 'tsdef';
 
 import { ChonkyActions } from '../action-definitions/index';
@@ -8,8 +8,7 @@ import { FileArray } from './file.types';
 import { I18nConfig } from './i18n.types';
 import { ChonkyIconProps } from './icons.types';
 import { ThumbnailGenerator } from './thumbnails.types';
-import {FixedSizeListProps} from "react-window";
-import {FileListProps} from "./file-list.types";
+import { FileListProps } from "./file-list.types";
 
 /**
  * File browser methods exposed to developers via the `FileBrowser` ref.
@@ -176,7 +175,7 @@ export interface FileBrowserProps {
     /**
      * Define empty state
      */
-    emptyState?: HTMLDivElement
+    emptyState?: Nullable<ReactElement | JSX.Element>
 
     /**
      * Define file data keys that should be displayed in ListView

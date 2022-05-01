@@ -1,7 +1,15 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { FileArray, FullFileBrowser } from '../.';
+import {
+    ChonkyActions,
+    ChonkyActionUnion, ChonkyIconName,
+    defineFileAction, FileAction,
+    FileArray,
+    FullFileBrowser,
+    GenericFileActionHandler
+} from '../.';
+import {useCallback} from "react";
 
 const App = () => {
     const testFiles: FileArray = [
@@ -19,9 +27,54 @@ const App = () => {
         {id: 'tesxhbcdovjdps,odcodmcomddsoosdwdqdwdocmckk', name: 'Datei13', isDir: false, type: 'MEDIA', ext: 'jpg'},
         {id: 'tesxhbcdovjdps,odcodmcomddsoosddddddocmckk', name: 'Datei14', isDir: false, type: 'MEDIA', ext: 'jpg'},
     ]
-  return (
+
+    const CustomActions = {
+        TrashFiles: defineFileAction({
+            id: 'trashFiles',
+            hotkeys: ['ctrl+d'],
+            button: {
+                name: 'Delete',
+                toolbar: false,
+                contextMenu: true,
+                icon: ChonkyIconName.trash,
+            },
+        }),
+    }
+
+    const customActionTrash = defineFileAction({
+        id: 'trashFiles',
+        __payloadType: {} as { three: string },
+    })
+
+    // Define custom types
+    type CustomActionUnion = typeof customActionTrash
+    type CustomHandler = GenericFileActionHandler<ChonkyActionUnion | CustomActionUnion>
+
+    // available context actions in library
+    const fileActionsLibrary: FileAction[] = [
+        CustomActions.TrashFiles,
+    ]
+
+    // handles file browser actions
+    const handleAction = useCallback<CustomHandler>(
+        data => {
+            const { selectedFilesForAction } = data.state
+
+            console.log(data)
+
+            // handle action type
+            switch (data.id) {
+                case CustomActions.TrashFiles.id:
+                    break
+                default:
+            }
+        },
+        [],
+    )
+
+    return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser listViewProps={{overscanCount: 4, itemSize: 70, space: 10}} disableSelection files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableSelection defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
     </div>
   );
 };

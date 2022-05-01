@@ -19,7 +19,6 @@ export type ChonkyConfig = Pick<
     | 'darkMode'
     | 'listViewProps'
     | 'i18n'
-    | 'emptyState'
     | 'displayCustomFileData'
 >;
 

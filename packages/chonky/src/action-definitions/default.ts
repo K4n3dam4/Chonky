@@ -232,7 +232,7 @@ export const DefaultActions = {
         button: {
             name: 'Open context menu',
             toolbar: false,
-            icon: ChonkyIconName.list,
+            icon: ChonkyIconName.config,
             iconOnly: true,
         },
     } as const)

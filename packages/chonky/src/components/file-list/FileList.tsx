@@ -1,4 +1,4 @@
-import React, { UIEvent, useCallback, useContext, useMemo } from 'react';
+import React, {ReactElement, UIEvent, useCallback, useContext, useMemo} from 'react';
 import { useSelector } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -14,10 +14,11 @@ import {
 import { FileListEmpty } from './FileListEmpty';
 import { GridContainer } from './GridContainer';
 import { ListContainer } from './ListContainer';
+import {Nullable} from "tsdef";
 
 export interface FileListProps {
     onScroll?: (e: UIEvent<HTMLDivElement>) => void;
-    emptyState?: HTMLDivElement
+    emptyState?: Nullable<ReactElement | JSX.Element>
 }
 
 interface StyleState {

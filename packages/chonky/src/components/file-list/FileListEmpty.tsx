@@ -4,18 +4,19 @@
  * @license MIT
  */
 
-import React, { CSSProperties, useContext } from 'react';
+import React, {CSSProperties, ReactElement, useContext} from 'react';
 import { useIntl } from 'react-intl';
 
 import { ChonkyIconName } from '../../types/icons.types';
 import { getI18nId, I18nNamespace } from '../../util/i18n';
 import { ChonkyIconContext } from '../../util/icon-helper';
 import { makeGlobalChonkyStyles } from '../../util/styles';
+import {Nullable} from "tsdef";
 
 export interface FileListEmptyProps {
     width: number;
     height: number;
-    emptyState?: HTMLDivElement
+    emptyState?: Nullable<ReactElement | JSX.Element>
 }
 
 export const FileListEmpty: React.FC<FileListEmptyProps> = props => {
@@ -35,12 +36,12 @@ export const FileListEmpty: React.FC<FileListEmptyProps> = props => {
 
     return (
         <div id='chonky-fileListEmpty' className={classes.fileListEmpty} style={style}>
-            <div id='chonky-fileListEmptyContent' className={classes.fileListEmptyContent}>
-                {emptyState || <>
+            {emptyState ||
+                <div id='chonky-fileListEmptyContent' className={classes.fileListEmptyContent}>
                     <ChonkyIcon icon={ChonkyIconName.folderOpen}/>
                     &nbsp; {emptyString}
-                </>}
-            </div>
+                </div>
+            }
         </div>
     );
 };
