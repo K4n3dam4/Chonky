@@ -33,6 +33,13 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
         (index: number) => displayFileIdsRef.current[index] ?? `loading-file-${index}`,
         [displayFileIdsRef]
     );
+    const getFileListProps = () => {
+        if (!fileListProps?.space) return fileListProps
+        return {
+            ...fileListProps,
+            itemSize: (fileListProps.itemSize || viewConfig.entryHeight) + fileListProps.space
+        }
+    }
 
     const classes = useStyles();
     const listComponent = useMemo(() => {
@@ -41,7 +48,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
             return (
                 <div style={{
                     ...data.style,
-                    top: fileListProps?.space ? data.style.top as number + fileListProps.space * data.index : data.style.top
+                    ...(fileListProps?.space && { height: data.style.height as number - fileListProps.space} ),
                 }}>
                     <SmartFileEntry
                         fileId={displayFileIds[data.index] ?? null}
@@ -61,7 +68,7 @@ export const ListContainer: React.FC<FileListListProps> = React.memo(props => {
                 itemCount={displayFileIds.length}
                 width={width}
                 itemKey={getItemKey}
-                {...fileListProps}
+                {...getFileListProps()}
             >
                 {rowRenderer}
             </FixedSizeList>
