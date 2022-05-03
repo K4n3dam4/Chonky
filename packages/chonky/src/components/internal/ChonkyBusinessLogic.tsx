@@ -65,8 +65,12 @@ export const ChonkyBusinessLogicInner = React.memo(
             )
         );
         useDTE(
+            reduxActions.setOpenFilesOnSingleClick,
+            getValueOrFallback(props.openFilesOnSingleClick, defaultConfig.openFilesOnSingleClick, 'boolean')
+        )
+        useDTE(
             reduxActions.setCustomFileData,
-            getValueOrFallback(props.displayCustomFileData, defaultConfig.displayCustomFileData) as any
+            getValueOrFallback(props.displayCustomFileData, defaultConfig.displayCustomFileData)
         )
         useDTE(
             reduxActions.setFileListProps,

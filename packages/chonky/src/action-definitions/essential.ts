@@ -1,6 +1,12 @@
 import { reduxActions } from '../redux/reducers';
 import {
-    getFileData, getIsFileSelected, selectDisableSelection, selectors, selectParentFolder,
+    getFileData,
+    getIsFileSelected,
+    selectContextMenuConfig,
+    selectDisableSelection,
+    selectors,
+    selectParentFolder,
+    selectSelectedFiles,
     selectSelectionSize
 } from '../redux/selectors';
 import { reduxThunks } from '../redux/thunks';
@@ -41,7 +47,6 @@ export const EssentialActions = {
                 }
             } else {
                 // We're dealing with a single click
-
                 const disableSelection = selectDisableSelection(getReduxState());
                 if (FileHelper.isSelectable(payload.file) && !disableSelection) {
                     if (payload.ctrlKey) {
@@ -111,6 +116,30 @@ export const EssentialActions = {
                             fileId: payload.file.id,
                         })
                     );
+                }
+
+                // open file on single click
+                const filesSelected = selectSelectedFiles(getReduxState()).length > 0
+                const openFilesOnSingleClick = selectors.getOpenFilesOnSingleClick(getReduxState())
+
+                console.log(filesSelected && openFilesOnSingleClick)
+                if (filesSelected && openFilesOnSingleClick) {
+                    const contextMenuHidden = selectContextMenuConfig(getReduxState())
+                    const isOpenable = FileHelper.isOpenable(payload.file)
+
+                    if (!contextMenuHidden && isOpenable) {
+                        reduxDispatch(
+                            thunkRequestFileAction(ChonkyActions.OpenFiles, {
+                                targetFile: payload.file,
+
+                                // To simulate Windows Explorer and Nautilus behaviour,
+                                // a double click on a file only opens that file even if
+                                // there is a selection.
+                                files: [payload.file],
+                            })
+                        );
+
+                    }
                 }
             }
         }

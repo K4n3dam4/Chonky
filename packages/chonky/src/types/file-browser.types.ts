@@ -143,6 +143,11 @@ export interface FileBrowserProps {
     clearSelectionOnOutsideClick?: boolean;
 
     /**
+     * Determines whether files should open on single click
+     */
+    openFilesOnSingleClick?: boolean;
+
+    /**
      * Icon component that will be used in this instance of Chonky. Note that this
      * will only affect the current instance of Chonky. If you wanna set the icon
      * component for all Chonky instances, use the global config.

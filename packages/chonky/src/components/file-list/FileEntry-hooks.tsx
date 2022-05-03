@@ -51,6 +51,7 @@ export const useFileEntryState = (file: Nullable<FileData>, selected: boolean, f
             color: file && file.color !== undefined ? file.color : fileColor,
             selected: selected,
             focused: !!focused,
+            hideExt: file && file.hideExt ? file.hideExt : false,
         };
     }, [file, focused, iconData, selected, thumbnailLoading, thumbnailUrl]);
 };
@@ -112,7 +113,7 @@ export const useFileNameComponent = (file: Nullable<FileData>) => {
         return (
             <>
                 {name}
-                {extension && <span className="chonky-file-entry-description-title-extension">{extension}</span>}
+                {extension && !file.hideExt && <span className="chonky-file-entry-description-title-extension">{extension}</span>}
             </>
         );
     }, [file]);

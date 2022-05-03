@@ -97,6 +97,7 @@ const getCleanFileIds = (state: RootState) => state.cleanFileIds;
 const getSortActionId = (state: RootState) => state.sortActionId;
 const getSortOrder = (state: RootState) => state.sortOrder;
 const getSearchString = (state: RootState) => state.searchString;
+const getOpenFilesOnSingleClick = (state: RootState) => state.openFilesOnSingleClick
 const _getLastClick = (state: RootState) => state.lastClick;
 const getDisplayCustomFileData = (state: RootState) => state.displayCustomFileData
 
@@ -218,6 +219,7 @@ export const selectors = {
     getCleanFileIds,
     getSortActionId,
     getSortOrder,
+    getOpenFilesOnSingleClick,
     getSearchString,
     _getLastClick,
     getDisplayCustomFileData,

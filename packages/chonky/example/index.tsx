@@ -13,19 +13,19 @@ import {useCallback} from "react";
 
 const App = () => {
     const testFiles: FileArray = [
-        {id: 'wedewomdoiedmed', name: 'Datei1', isDir: true, descr: 'Hier steht eine Beschreibung'},
-        {id: 'wedewomdoiedeedeweddmed', name: 'Datei2', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjewfefrgewfgfe', name: 'Datei4', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcewfewfewfdovjwfefefe', name: 'Datei5', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjfewfewfefwefefewffew', name: 'Datei6', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjefwefefwefefefefefwfewx', name: 'Datei7', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjiomocmoicmdsiomcidmdismi', name: 'Datei8', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjcdsodsm,ocmdocmdomcodmcoc', name: 'Datei9', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjdlc,ocd,oc,odc,docodmcodmc', name: 'Datei10', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjdps,odcodmcomddsoosddocmckk', name: 'Datei11', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjdps,odcodmcomddsoosdddwqdocmckk', name: 'Datei12', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjdps,odcodmcomddsoosdwdqdwdocmckk', name: 'Datei13', isDir: false, type: 'MEDIA', ext: 'jpg'},
-        {id: 'tesxhbcdovjdps,odcodmcomddsoosddddddocmckk', name: 'Datei14', isDir: false, type: 'MEDIA', ext: 'jpg'},
+        {id: 'wedewomdoiedmed', name: 'Datei1.jpg', isDir: true, descr: 'Hier steht eine Beschreibung', childrenCount: 10},
+        {id: 'wedewomdoiedeedeweddmed', name: 'Datei2.jpg', isDir: false, type: 'MEDIA', ext: '.jpg', color: '#473E7D'},
+        {id: 'tesxhbcdovjewfefrgewfgfe', name: 'Datei4.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcewfewfewfdovjwfefefe', name: 'Datei5.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjfewfewfefwefefewffew', name: 'Datei6.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjefwefefwefefefefefwfewx', name: 'Datei7.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjiomocmoicmdsiomcidmdismi', name: 'Datei8.to.send.wmv', isDir: false, type: 'MEDIA', ext: '.wmv', hideExt: true},
+        {id: 'tesxhbcdovjcdsodsm,ocmdocmdomcodmcoc', name: 'Datei9.jpg.png', isDir: false, type: 'MEDIA'},
+        {id: 'tesxhbcdovjdlc,ocd,oc,odc,docodmcodmc', name: 'Datei10.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjdps,odcodmcomddsoosddocmckk', name: 'Datei11.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjdps,odcodmcomddsoosdddwqdocmckk', name: 'Datei12.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjdps,odcodmcomddsoosdwdqdwdocmckk', name: 'Datei13.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjdps,odcodmcomddsoosddddddocmckk', name: 'Datei14.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
     ]
 
     const CustomActions = {
@@ -72,9 +72,14 @@ const App = () => {
         [],
     )
 
+    const disableActions = [
+        // ChonkyActions.SelectAllFiles.id,
+        // ChonkyActions.OpenSelection.id,
+    ]
+
     return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableSelection defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser openFilesOnSingleClick onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableDefaultFileActions={disableActions} defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
     </div>
   );
 };

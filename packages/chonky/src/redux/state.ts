@@ -46,6 +46,7 @@ export const initialRootState: RootState = {
     doubleClickDelay: 300,
     disableDragAndDrop: false,
     clearSelectionOnOutsideClick: true,
+    openFilesOnSingleClick: false,
     displayCustomFileData: false,
 
     lastClick: null,

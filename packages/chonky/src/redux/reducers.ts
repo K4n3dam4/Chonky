@@ -38,7 +38,7 @@ const reducers = {
         state.fileActionMap = fileActionMap as FileMap;
         state.fileActionIds = fileIds;
     },
-    setCustomFileData(state: RootState, action: PayloadAction<string[]>) {
+    setCustomFileData(state: RootState, action: PayloadAction< boolean | string[]>) {
         state.displayCustomFileData = action.payload
     },
     updateFileActionMenuItems(state: RootState, action: PayloadAction<[FileActionMenuItem[], FileActionMenuItem[]]>) {
@@ -153,6 +153,9 @@ const reducers = {
     },
     setClearSelectionOnOutsideClick(state: RootState, action: PayloadAction<boolean>) {
         state.clearSelectionOnOutsideClick = action.payload;
+    },
+    setOpenFilesOnSingleClick(state: RootState, action: PayloadAction<boolean>) {
+        state.openFilesOnSingleClick = action.payload;
     },
     setLastClickIndex(state: RootState, action: PayloadAction<Nullable<{ index: number; fileId: string }>>) {
         state.lastClick = action.payload;

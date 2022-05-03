@@ -68,7 +68,8 @@ export type RootState = {
     doubleClickDelay: number;
     disableDragAndDrop: boolean;
     clearSelectionOnOutsideClick: boolean;
-    displayCustomFileData: false | string[];
+    openFilesOnSingleClick: boolean;
+    displayCustomFileData: boolean | string[];
 
 
     // State to use inside effects

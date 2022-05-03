@@ -15,6 +15,7 @@ export type ChonkyConfig = Pick<
     | 'defaultSortActionId'
     | 'defaultFileViewActionId'
     | 'clearSelectionOnOutsideClick'
+    | 'openFilesOnSingleClick'
     | 'iconComponent'
     | 'darkMode'
     | 'listViewProps'
@@ -34,6 +35,7 @@ export const defaultConfig: ChonkyConfig = {
     defaultSortActionId: ChonkyActions.SortFilesByName.id,
     defaultFileViewActionId: ChonkyActions.EnableGridView.id,
     clearSelectionOnOutsideClick: true,
+    openFilesOnSingleClick: false,
     iconComponent: ChonkyIconPlaceholder,
     darkMode: false,
     listViewProps: null,

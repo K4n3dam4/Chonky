@@ -6,6 +6,7 @@ export interface FileData {
     id: string; // (Required) String that uniquely identifies the file
     name: string; // (Required) Full name, e.g. `MyImage.jpg`
     ext?: string; // File extension, e.g. `.jpg`
+    hideExt?: boolean // Don't display extension in name
 
     isDir?: boolean; // Is a directory, default: false
     isHidden?: boolean; // Is a hidden file, default: false
