@@ -7,7 +7,7 @@ import {
     defineFileAction, FileAction,
     FileArray,
     FullFileBrowser,
-    GenericFileActionHandler
+    GenericFileActionHandler, setChonkyDefaults
 } from '../.';
 import {useCallback} from "react";
 import {ChonkyTheme} from "../src/util/styles";
@@ -62,8 +62,6 @@ const App = () => {
         data => {
             const { selectedFilesForAction } = data.state
 
-            console.log(data)
-
             // handle action type
             switch (data.id) {
                 case CustomActions.TrashFiles.id:
@@ -79,7 +77,7 @@ const App = () => {
         // ChonkyActions.OpenSelection.id,
     ]
 
-    const themeOverride: DeepPartial<ChonkyTheme> = {
+    const theme: DeepPartial<ChonkyTheme> = {
         dnd: {
             canDropColor: '#69CA90',
             cannotDropColor: '#FF7171',
@@ -111,9 +109,19 @@ const App = () => {
         }
     }
 
+    const config = {
+        disableDefaultFileActions: disableActions,
+        openFilesOnSingleClick: true,
+        listViewProps: {itemSize: 70, space: 12},
+        defaultFileViewActionId: ChonkyActions.EnableListView.id,
+        displayCustomFileData: ['descr', 'type'],
+    }
+
+    setChonkyDefaults(config)
+
     return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser themeOverride={themeOverride} openFilesOnSingleClick onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableDefaultFileActions={disableActions} defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser themeOverride={theme} onFileAction={handleAction} fileActions={fileActionsLibrary} files={testFiles} />
     </div>
   );
 };

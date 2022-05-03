@@ -161,6 +161,12 @@ export interface FileBrowserProps {
     darkMode?: boolean;
 
     /**
+     * Override theme. If you wish to customize selection- & focusIndicator
+     * or grid folder use this option.
+     */
+    themeOverride?: DeepPartial<ChonkyTheme>
+
+    /**
      * Override file list props
      */
     listViewProps?: Nullable<FileListProps>
@@ -187,6 +193,4 @@ export interface FileBrowserProps {
      * Define file data keys that should be displayed in ListView
      */
     displayCustomFileData?: boolean | string[]
-
-    themeOverride?: DeepPartial<ChonkyTheme>
 }
