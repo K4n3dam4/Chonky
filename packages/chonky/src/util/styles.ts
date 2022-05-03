@@ -61,8 +61,17 @@ export const lightTheme = {
         fontSize: 14,
 
         fileColorTint: 'rgba(255, 255, 255, 0.4)',
+        fileColorFocusedTint: 'inset rgba(0,153,255, .65) 0 0 0 3px',
+        fileColorSelectedTint: 'inset rgba(0, 0, 0, 1) 0 0 0 3px',
         folderBackColorTint: 'rgba(255, 255, 255, 0.1)',
+        folderBackColorFocusedTint: 'rgba(0, 0, 0, 0.3)',
+        folderBackColorSelectedTint: 'rgba(0, 153, 255, .4)',
         folderFrontColorTint: 'rgba(255, 255, 255, 0.4)',
+        folderFrontColorFocusedTint: 'inset rgba(0, 0, 0, 1) 0 0 0 3px',
+        folderFrontColorSelectedTint: 'inset rgba(0, 153, 255, .65) 0 0 0 3px',
+        previewFile: {
+            backgroundColor: '',
+        }
     },
 
     listFileEntry: {
@@ -71,6 +80,30 @@ export const lightTheme = {
         iconBorderRadius: 5,
         fontSize: 14,
     },
+
+    selectionIndicator: {
+        background:
+            'repeating-linear-gradient(' +
+            '45deg,' +
+            'rgba(0,153,255,.14),' +
+            'rgba(0,153,255,.14) 10px,' +
+            'rgba(0,153,255,.25) 0,' +
+            'rgba(0,153,255,.25) 20px' +
+            ')',
+        backgroundColor: 'rgba(0, 153, 255, .14)',
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        zIndex: 10,
+    },
+
+    focusIndicator: {
+        boxShadow: 'inset rgba(0, 0, 0, 1) 0 0 0 2px',
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        zIndex: 11,
+    }
 };
 
 export type ChonkyTheme = typeof lightTheme;

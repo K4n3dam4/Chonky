@@ -68,9 +68,13 @@ export const FileBrowser = React.forwardRef<
         const muiTheme = createMuiTheme({
             palette: { type: darkMode ? 'dark' : 'light' },
         });
+        const lightThemeOverride = merge(
+            muiTheme,
+            merge(lightTheme, props.themeOverride ? props.themeOverride : {})
+        )
         const combinedTheme = merge(
             muiTheme,
-            merge(lightTheme, darkMode ? darkThemeOverride : {})
+            merge(lightThemeOverride, darkMode ? darkThemeOverride : {})
         );
         return isMobileBreakpoint
             ? merge(combinedTheme, mobileThemeOverride)

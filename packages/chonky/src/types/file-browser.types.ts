@@ -1,5 +1,5 @@
 import {ElementType, ReactElement, UIEvent} from 'react';
-import { Nullable } from 'tsdef';
+import {DeepPartial, Nullable} from 'tsdef';
 
 import { ChonkyActions } from '../action-definitions/index';
 import { GenericFileActionHandler } from './action-handler.types';
@@ -9,6 +9,7 @@ import { I18nConfig } from './i18n.types';
 import { ChonkyIconProps } from './icons.types';
 import { ThumbnailGenerator } from './thumbnails.types';
 import { FileListProps } from "./file-list.types";
+import {ChonkyTheme} from "../util/styles";
 
 /**
  * File browser methods exposed to developers via the `FileBrowser` ref.
@@ -186,4 +187,6 @@ export interface FileBrowserProps {
      * Define file data keys that should be displayed in ListView
      */
     displayCustomFileData?: boolean | string[]
+
+    themeOverride?: DeepPartial<ChonkyTheme>
 }

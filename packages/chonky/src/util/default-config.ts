@@ -21,6 +21,7 @@ export type ChonkyConfig = Pick<
     | 'listViewProps'
     | 'i18n'
     | 'displayCustomFileData'
+    | 'themeOverride'
 >;
 
 export const defaultConfig: ChonkyConfig = {
@@ -41,6 +42,7 @@ export const defaultConfig: ChonkyConfig = {
     listViewProps: null,
     i18n: {},
     displayCustomFileData: false,
+    themeOverride: {},
 };
 
 export const setChonkyDefaults = (config: Partial<ChonkyConfig>) => {

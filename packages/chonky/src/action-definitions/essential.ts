@@ -122,7 +122,6 @@ export const EssentialActions = {
                 const filesSelected = selectSelectedFiles(getReduxState()).length > 0
                 const openFilesOnSingleClick = selectors.getOpenFilesOnSingleClick(getReduxState())
 
-                console.log(filesSelected && openFilesOnSingleClick)
                 if (filesSelected && openFilesOnSingleClick) {
                     const contextMenuHidden = selectContextMenuConfig(getReduxState())
                     const isOpenable = FileHelper.isOpenable(payload.file)

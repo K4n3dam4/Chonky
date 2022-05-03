@@ -13,11 +13,6 @@
     border: none !important;
 }
 
-.chonky-listFileEntryFocusIndicator {
-    box-shadow: rgb(71 62 125) 0 0 0 1px inset !important;
-    background-color: #F7F8FE !important;
-}
-
 .chonky-fileEntryClickableWrapper {
     color: rgb(71 62 125);
 }

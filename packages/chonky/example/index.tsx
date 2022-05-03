@@ -10,6 +10,8 @@ import {
     GenericFileActionHandler
 } from '../.';
 import {useCallback} from "react";
+import {ChonkyTheme} from "../src/util/styles";
+import {DeepPartial} from "tsdef";
 
 const App = () => {
     const testFiles: FileArray = [
@@ -25,7 +27,7 @@ const App = () => {
         {id: 'tesxhbcdovjdps,odcodmcomddsoosddocmckk', name: 'Datei11.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
         {id: 'tesxhbcdovjdps,odcodmcomddsoosdddwqdocmckk', name: 'Datei12.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
         {id: 'tesxhbcdovjdps,odcodmcomddsoosdwdqdwdocmckk', name: 'Datei13.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
-        {id: 'tesxhbcdovjdps,odcodmcomddsoosddddddocmckk', name: 'Datei14.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
+        {id: 'tesxhbcdovjdps,odcodmcomddsoosddddddocmckk', name: 'Datei14dqwiuhdwuhquwdhqwdquwuddwubhwdqbudwqbudqwwd.wdqhwqdi.jpg', isDir: false, type: 'MEDIA', ext: '.jpg'},
     ]
 
     const CustomActions = {
@@ -77,9 +79,41 @@ const App = () => {
         // ChonkyActions.OpenSelection.id,
     ]
 
+    const themeOverride: DeepPartial<ChonkyTheme> = {
+        dnd: {
+            canDropColor: '#69CA90',
+            cannotDropColor: '#FF7171',
+        },
+        gridFileEntry: {
+            iconColor: '#473F7D',
+            iconColorFocused: '#473F7D',
+            fileColorFocusedTint: 'inset rgb(71 62 125) 0 0 0 3px',
+            fileColorSelectedTint: 'inset rgb(71 62 125) 0 0 0 3px',
+            folderFrontColorTint: '#FFBB75',
+            folderBackColorTint: '#F4A553',
+            folderBackColorFocusedTint: '#F4A553',
+            folderBackColorSelectedTint: '#F4A553',
+            folderFrontColorFocusedTint: 'inset rgb(71 62 125) 0 0 0 3px',
+            folderFrontColorSelectedTint: 'inset rgb(71 62 125) 0 0 0 3px',
+            previewFile: {
+                backgroundColor: 'none',
+            }
+        },
+        selectionIndicator: {
+            background: 'none',
+        },
+        focusIndicator: {
+            boxShadow: 'rgb(71 62 125) 0 0 0 1px inset',
+            position: 'absolute',
+            height: '100%',
+            width: '100%',
+            zIndex: 11,
+        }
+    }
+
     return (
     <div style={{ height: 400 }}>
-      <FullFileBrowser openFilesOnSingleClick onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableDefaultFileActions={disableActions} defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
+      <FullFileBrowser themeOverride={themeOverride} openFilesOnSingleClick onFileAction={handleAction} fileActions={fileActionsLibrary} listViewProps={{itemSize: 70, space: 10}} disableDefaultFileActions={disableActions} defaultFileViewActionId={ChonkyActions.EnableListView.id} files={testFiles} displayCustomFileData={['descr', 'type']} />
     </div>
   );
 };
